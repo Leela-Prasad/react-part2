@@ -41,7 +41,7 @@ function GenreList({ gameQuery, onSelectedGenre }: Props) {
                 textAlign="left"
                 objectFit="cover"
                 fontWeight={
-                  genre.id === gameQuery.genre?.id ? "bold" : "normal"
+                  genre.id === gameQuery.genreId ? "bold" : "normal"
                 }
                 fontSize={"lg"}
                 variant="link"

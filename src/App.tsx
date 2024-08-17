@@ -11,15 +11,15 @@ import { Genre } from "./game-hub/hooks/useGenres";
 import { Platform } from "./game-hub/hooks/usePlatforms";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  
+
   return (
     <Grid
       templateAreas={{
@@ -36,7 +36,9 @@ function App() {
         <GridItem area={"aside"} paddingX={5}>
           <GenreList
             gameQuery={gameQuery}
-            onSelectedGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            onSelectedGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           ></GenreList>
         </GridItem>
       </Show>
@@ -47,7 +49,7 @@ function App() {
             <PlatformSelector
               gameQuery={gameQuery}
               onSelectPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform.id })
               }
             />
             <SortSelector

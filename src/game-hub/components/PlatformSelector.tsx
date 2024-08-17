@@ -3,6 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import usePlatforms from "../hooks/usePlatforms";
 import { Platform } from "../hooks/usePlatforms";
 import { GameQuery } from "../../App";
+import usePlatform from "../hooks/usePlatform";
 
 interface Props {
   onSelectPlatform: (platform: Platform) => void;
@@ -11,9 +12,7 @@ interface Props {
 
 function PlatformSelector({ onSelectPlatform, gameQuery }: Props) {
   const { data, error } = usePlatforms();
-  const selectedPlatform = data.results.find(
-    (p) => p.id === gameQuery.platformId
-  );
+  const selectedPlatform = usePlatform(gameQuery.platformId);
 
   if (error) return null;
 

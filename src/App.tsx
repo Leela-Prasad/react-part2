@@ -1,8 +1,7 @@
-import Counter from "./state-management/components/Counter";
-import TaskList from "./state-management/components/TaskList";
+import LoginStatus from "./state-management/components/LoginStatus";
 
 function App() {
-  return <TaskList />;
+  return <LoginStatus />;
 }
 
 export default App;

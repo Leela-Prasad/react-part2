@@ -1,7 +1,8 @@
 import Counter from "./state-management/components/Counter";
+import TaskList from "./state-management/components/TaskList";
 
 function App() {
-  return <Counter />;
+  return <TaskList />;
 }
 
 export default App;

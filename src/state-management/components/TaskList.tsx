@@ -1,9 +1,10 @@
 import { HStack } from "@chakra-ui/react";
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import taskReducer from "../reducers/taskReducer";
+import TasksContext from "../contexts/tasksContext";
 
 function TaskList() {
-  const [tasks, dispatch] = useReducer(taskReducer, []);
+  const {tasks, dispatch} = useContext(TasksContext);
 
   return (
     <>

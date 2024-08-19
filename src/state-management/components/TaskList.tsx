@@ -1,12 +1,12 @@
 import { HStack } from "@chakra-ui/react";
-import { useContext, useReducer, useState } from "react";
-import taskReducer from "../reducers/taskReducer";
-import TasksContext from "../contexts/tasksContext";
+import { useContext } from "react";
 import { AuthContext } from "../contexts/authContext";
+import useTasks from "../hooks/useTasks";
+import useAuth from "../hooks/useAuth";
 
 function TaskList() {
-  const {tasks, dispatch} = useContext(TasksContext);
-  const {user} = useContext(AuthContext);
+  const { tasks, dispatch } = useTasks();
+  const { user } = useAuth();
 
   return (
     <>

@@ -2,12 +2,15 @@ import { HStack } from "@chakra-ui/react";
 import { useContext, useReducer, useState } from "react";
 import taskReducer from "../reducers/taskReducer";
 import TasksContext from "../contexts/tasksContext";
+import { AuthContext } from "../contexts/authContext";
 
 function TaskList() {
   const {tasks, dispatch} = useContext(TasksContext);
+  const {user} = useContext(AuthContext);
 
   return (
     <>
+      <p>User: {user}</p>
       <button
         onClick={() =>
           dispatch({

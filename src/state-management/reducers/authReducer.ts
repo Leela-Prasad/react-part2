@@ -7,9 +7,9 @@ interface LogoutAction {
   type: "LOGOUT";
 }
 
-type authAction = LoginAction | LogoutAction;
+export type AuthAction = LoginAction | LogoutAction;
 
-function loginReducer(user: string, action: authAction) {
+function authReducer(user: string, action: AuthAction) {
   switch (action.type) {
     case "LOGIN":
       return action.username;
@@ -18,4 +18,4 @@ function loginReducer(user: string, action: authAction) {
   }
 }
 
-export default loginReducer;
+export default authReducer;

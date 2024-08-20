@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
-import { GameQuery } from "../../App";
+import { GameQuery } from "../App";
 
 interface Props {
   onSelectedGenre: (genre: Genre) => void;

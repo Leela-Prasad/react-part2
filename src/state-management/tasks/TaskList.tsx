@@ -1,8 +1,9 @@
 import { HStack } from "@chakra-ui/react";
 import { useContext } from "react";
-import { AuthContext } from "../contexts/authContext";
-import useTasks from "../hooks/useTasks";
 import useAuth from "../hooks/useAuth";
+import TasksContext from "./tasksContext";
+
+const useTasks = () => useContext(TasksContext);
 
 function TaskList() {
   const { tasks, dispatch } = useTasks();

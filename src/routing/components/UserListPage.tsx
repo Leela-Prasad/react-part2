@@ -1,15 +1,17 @@
+import { Link } from "react-router-dom";
+
 function UserListPage() {
   const users = [
     { id: 1, name: "Mosh" },
-    { id: 1, name: "John" },
-    { id: 1, name: "Alice" },
+    { id: 2, name: "John" },
+    { id: 3, name: "Alice" },
   ];
   return (
     <>
       <ul className="list-group">
         {users.map((user) => (
           <li className="list-group-item">
-            <a href="#">{user.name}</a>
+            <Link to={`/users/${user.id}`}>{user.name}</Link>
           </li>
         ))}
       </ul>

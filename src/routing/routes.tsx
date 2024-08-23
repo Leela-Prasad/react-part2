@@ -5,7 +5,8 @@ import ContactPage from "./components/ContactPage";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage /> },
-  { path: "/users", element: <UserListPage /> }
+  { path: "/users", element: <UserListPage /> },
+  { path: "/contact", element: <ContactPage /> },
 ]);
 
 export default router;

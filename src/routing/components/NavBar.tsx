@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -13,14 +13,14 @@ function NavBar() {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link to={"/"} className="nav-link">
+              <NavLink to={"/"} className="nav-link">
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="navbar-item">
-              <Link to={"/users"} className="nav-link">
+              <NavLink to={"/users"} className="nav-link">
                 Users
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>

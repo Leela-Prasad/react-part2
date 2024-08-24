@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import ContactPage from "./components/ContactPage";
 import HomePage from "./components/HomePage";
 import Layout from "./components/Layout";
-import UserDetailPage from "./components/UserDetailPage";
-import UserListPage from "./components/UserListPage";
+import UserDetail from "./components/UserDetail";
+import UserPage from "./components/UserPage";
 
 const router = createBrowserRouter([
   {
@@ -11,10 +11,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "", element: <HomePage /> },
-      { path: "users", element: <UserListPage /> },
-      { path: "users/:id", element: <UserDetailPage /> },
+      {
+        path: "users",
+        element: <UserPage />,
+        children: [{ path: ":id", element: <UserDetail /> }],
+      },
     ],
   },
+
   { path: "/contact", element: <ContactPage /> },
 ]);
 

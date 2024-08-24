@@ -4,9 +4,6 @@ import useAuth from "../hooks/useAuth";
 
 const UserPage = () => {
   // throw new Error("Application Error");
-  const { user } = useAuth();
-
-  if (!user) return <Navigate to="/login" />;
 
   return (
     <div className="row">

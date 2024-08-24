@@ -6,6 +6,7 @@ import UserDetail from "./components/UserDetail";
 import UserPage from "./components/UserPage";
 import ErrorPage from "./components/ErrorPage";
 import LoginPage from "./components/LoginPage";
+import PrivateRoute from "./components/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <HomePage /> },
       { path: "login", element: <LoginPage /> },
+    ],
+  },
+  {
+    element: <PrivateRoute />,
+    children: [
       {
         path: "users",
         element: <UserPage />,

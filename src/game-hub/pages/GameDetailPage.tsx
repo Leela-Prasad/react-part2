@@ -7,6 +7,7 @@ import { platform } from "os";
 import CriticScore from "../components/CriticScore";
 import GameAttributes from "../components/GameAttributes";
 import GameTrailer from "../components/GameTrailer";
+import GameScreenshot from "../components/GameScreenshot";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -22,6 +23,7 @@ const GameDetailPage = () => {
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game} />
       <GameTrailer gameId={game.id} />
+      <GameScreenshot gameId={game.id} />
     </>
   );
 };

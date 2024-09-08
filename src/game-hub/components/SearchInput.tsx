@@ -3,11 +3,11 @@ import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setSearchText } from "../hooks/reduxStore";
+import { setSearchText } from "../hooks/gameQueryStore";
 
 function SearchInput() {
   const ref = useRef<HTMLInputElement>(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   return (
@@ -15,7 +15,7 @@ function SearchInput() {
       onSubmit={(event) => {
         event.preventDefault();
         if (ref.current) {
-          dispatch(setSearchText({searchText: ref.current.value}))
+          dispatch(setSearchText({ searchText: ref.current.value }));
           navigate("/");
         }
       }}

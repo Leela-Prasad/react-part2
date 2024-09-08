@@ -4,12 +4,12 @@ import usePlatform from "../hooks/usePlatform";
 import usePlatforms from "../hooks/usePlatforms";
 import { useTypedSelector } from "../hooks/reducer";
 import { useDispatch } from "react-redux";
-import { setPlatformId } from "../hooks/reduxStore";
+import { setPlatformId } from "../hooks/gameQueryStore";
 
 function PlatformSelector() {
   const { data, error } = usePlatforms();
-  const platformId = useTypedSelector(s => s.gameQuery.platformId)
-  const dispatch = useDispatch()
+  const platformId = useTypedSelector((s) => s.gameQuery.platformId);
+  const dispatch = useDispatch();
 
   const selectedPlatform = usePlatform(platformId);
 
@@ -23,7 +23,7 @@ function PlatformSelector() {
       <MenuList>
         {data?.results.map((platform) => (
           <MenuItem
-            onClick={() => dispatch(setPlatformId({platformId: platform.id}))}
+            onClick={() => dispatch(setPlatformId({ platformId: platform.id }))}
             key={platform.id}
           >
             {platform.slug}

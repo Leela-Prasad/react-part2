@@ -9,15 +9,15 @@ import {
 } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { useTypedSelector } from "../hooks/reducer";
-import { setGenreId } from "../hooks/reduxStore";
+import { setGenreId } from "../hooks/gameQueryStore";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 function GenreList() {
   const { data, isLoading, error } = useGenres();
-  const selectedGenreId = useTypedSelector(s => s.gameQuery.genreId)
-  
-  const dispatch = useDispatch()
+  const selectedGenreId = useTypedSelector((s) => s.gameQuery.genreId);
+
+  const dispatch = useDispatch();
 
   if (error) return null;
 
@@ -42,7 +42,7 @@ function GenreList() {
                 fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 fontSize={"lg"}
                 variant="link"
-                onClick={() => dispatch(setGenreId({genreId: genre.id}))}
+                onClick={() => dispatch(setGenreId({ genreId: genre.id }))}
               >
                 {genre.name}
               </Button>

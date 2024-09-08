@@ -1,6 +1,8 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import useGameQueryStore from "../hooks/store";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../hooks/reducer";
+import { setSortOrder } from "../hooks/reduxStore";
 
 function SortSelector() {
   const sortOrders = [
@@ -12,8 +14,8 @@ function SortSelector() {
     { value: "-rating", label: "Average Rating" },
   ];
 
-  const sortOrder = useGameQueryStore(s => s.gameQuery.sortOrder);
-  const setSortOrder = useGameQueryStore(s => s.setSortOrder);
+  const sortOrder = useTypedSelector(s => s.gameQuery.sortOrder)
+  const dispatch = useDispatch()
 
   const sortLabel = sortOrders.find(order => order.value === sortOrder)?.label
 
@@ -27,7 +29,7 @@ function SortSelector() {
           <MenuItem
             key={sortOrder.value}
             value={sortOrder.value}
-            onClick={() => setSortOrder(sortOrder.value)}
+            onClick={() => dispatch(setSortOrder({sortOrder: sortOrder.value}))}
           >
             {sortOrder.label}
           </MenuItem>

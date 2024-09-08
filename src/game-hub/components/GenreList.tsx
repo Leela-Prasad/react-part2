@@ -7,14 +7,17 @@ import {
   ListItem,
   Spinner,
 } from "@chakra-ui/react";
-import useGameQueryStore from "../hooks/store";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../hooks/reducer";
+import { setGenreId } from "../hooks/reduxStore";
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 
 function GenreList() {
   const { data, isLoading, error } = useGenres();
-  const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
-  const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
+  const selectedGenreId = useTypedSelector(s => s.gameQuery.genreId)
+  
+  const dispatch = useDispatch()
 
   if (error) return null;
 
@@ -39,7 +42,7 @@ function GenreList() {
                 fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 fontSize={"lg"}
                 variant="link"
-                onClick={() => setSelectedGenreId(genre.id)}
+                onClick={() => dispatch(setGenreId({genreId: genre.id}))}
               >
                 {genre.name}
               </Button>

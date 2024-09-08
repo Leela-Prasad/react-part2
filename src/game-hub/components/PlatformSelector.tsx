@@ -1,13 +1,15 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import useGameQueryStore from "../hooks/store";
 import usePlatform from "../hooks/usePlatform";
 import usePlatforms from "../hooks/usePlatforms";
+import { useTypedSelector } from "../hooks/reducer";
+import { useDispatch } from "react-redux";
+import { setPlatformId } from "../hooks/reduxStore";
 
 function PlatformSelector() {
   const { data, error } = usePlatforms();
-  const platformId = useGameQueryStore((s) => s.gameQuery.platformId);
-  const setPlatformId = useGameQueryStore((s) => s.setPlatformId);
+  const platformId = useTypedSelector(s => s.gameQuery.platformId)
+  const dispatch = useDispatch()
 
   const selectedPlatform = usePlatform(platformId);
 
@@ -21,7 +23,7 @@ function PlatformSelector() {
       <MenuList>
         {data?.results.map((platform) => (
           <MenuItem
-            onClick={() => setPlatformId(platform.id)}
+            onClick={() => dispatch(setPlatformId({platformId: platform.id}))}
             key={platform.id}
           >
             {platform.slug}

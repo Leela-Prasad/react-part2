@@ -8,8 +8,12 @@ import { RouterProvider } from "react-router-dom";
 import router from "./game-hub/routes";
 import theme from "./game-hub/theme";
 import "./index.css";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import { reducer } from "./game-hub/hooks/reducer";
 
 const queryClient = new QueryClient();
+const store = configureStore({ reducer });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -18,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <ColorModeScript
           initialColorMode={theme.config.initialColorMode}
         ></ColorModeScript>
-        <RouterProvider router={router} />
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
       </ChakraProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
